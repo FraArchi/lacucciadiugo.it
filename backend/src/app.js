@@ -87,6 +87,12 @@ const ugoChat = require('./routes/ugoChat');
 const aiRoutes = require('./routes/aiRoutes');
 const publicIntegrationRoutes = require('./routes/publicIntegrationRoutes');
 
+// DogLife SaaS Routes
+const dogRoutes = require('./routes/dogRoutes');
+const marketplaceRoutes = require('./routes/marketplaceRoutes');
+const forumGroupRoutes = require('./routes/forumGroupRoutes');
+const videoAnalysisRoutes = require('./routes/videoAnalysisRoutes');
+
 // Import middleware
 const errorHandler = require('./middleware/errorHandler');
 const logger = require('./utils/logger');
@@ -224,6 +230,15 @@ app.use('/api/ugo-ai', ugoAIRoutes);
 app.use('/api/ugo', ugoChat);
 app.use('/api/ai', aiRoutes);
 app.use('/api/public', publicIntegrationRoutes);
+
+// DogLife SaaS Routes
+app.use('/api/dogs', dogRoutes);
+app.use('/api/marketplace', marketplaceRoutes);
+app.use('/api/groups', forumGroupRoutes);
+app.use('/api/videos', videoAnalysisRoutes);
+
+// Static files for uploads
+app.use('/uploads', express.static('uploads'));
 
 // Sentry error handler
 if (Sentry) {

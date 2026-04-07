@@ -1,0 +1,100 @@
+/* ============================================
+   Card Component Styles
+   ============================================ */
+
+.card {
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+  transition: all var(--transition-base);
+}
+
+/* Variants */
+.card-solid {
+  background: var(--white);
+  box-shadow: var(--shadow-md);
+}
+
+.card-glass {
+  background: rgba(255, 255, 255, 0.1);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: var(--shadow-lg);
+}
+
+.card-outline {
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+}
+
+/* Hover Effect */
+.card-hover:hover {
+  box-shadow: var(--shadow-xl);
+}
+
+.card-solid.card-hover:hover {
+  box-shadow: var(--shadow-xl), 0 10px 40px rgba(255, 107, 107, 0.1);
+}
+
+/* Clickable */
+.card-clickable {
+  cursor: pointer;
+}
+
+/* Padding */
+.card-padding-sm {
+  padding: var(--space-4);
+}
+
+.card-padding-md {
+  padding: var(--space-6);
+}
+
+.card-padding-lg {
+  padding: var(--space-8);
+}
+
+/* Sub-components */
+.card-header {
+  padding: var(--space-4) var(--space-6);
+  border-bottom: 1px solid var(--gray-100);
+}
+
+.card-body {
+  padding: var(--space-6);
+}
+
+.card-footer {
+  padding: var(--space-4) var(--space-6);
+  border-top: 1px solid var(--gray-100);
+  background: var(--gray-50);
+}
+
+.card-image {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.card-hover:hover .card-image img {
+  transform: scale(1.05);
+}
+
+/* Special Card Styles */
+.card-gradient {
+  background: var(--gradient-warm);
+  color: var(--white);
+}
+
+.card-gradient h2,
+.card-gradient h3,
+.card-gradient h4,
+.card-gradient p {
+  color: var(--white);
+}

@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://lacucciadiugo.it/sitemap.xml

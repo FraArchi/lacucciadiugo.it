@@ -1,0 +1,111 @@
+/* ============================================
+   Modal Component Styles
+   ============================================ */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-modal-backdrop);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4);
+  background: rgba(0, 0, 0, 0.5);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+}
+
+.modal {
+  position: relative;
+  z-index: var(--z-modal);
+  width: 100%;
+  max-height: calc(100vh - var(--space-8));
+  background: var(--white);
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--shadow-2xl);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Sizes */
+.modal-sm {
+  max-width: 400px;
+}
+
+.modal-md {
+  max-width: 500px;
+}
+
+.modal-lg {
+  max-width: 700px;
+}
+
+.modal-xl {
+  max-width: 900px;
+}
+
+.modal-full {
+  max-width: calc(100vw - var(--space-8));
+  max-height: calc(100vh - var(--space-8));
+}
+
+/* Header */
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-4) var(--space-6);
+  border-bottom: 1px solid var(--gray-100);
+}
+
+.modal-title {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: var(--font-bold);
+  color: var(--gray-900);
+  margin: 0;
+}
+
+.modal-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--gray-500);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.modal-close:hover {
+  background: var(--gray-100);
+  color: var(--gray-700);
+}
+
+.modal-close svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Body */
+.modal-body {
+  flex: 1;
+  padding: var(--space-6);
+  overflow-y: auto;
+}
+
+/* Footer */
+.modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-6);
+  border-top: 1px solid var(--gray-100);
+  background: var(--gray-50);
+}

@@ -1,8 +1,0 @@
-git rebase origin/main
-git rebase --continue
-git pull origin main
-ORDINE GIUSTO forse
-git add .
-git commit -m "aggiorna i cambiamenti"
-git pull origin main
-git push

@@ -1,0 +1,738 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Il Mondo di Ugo | Il Cane Più Buono del Mondo 🐾</title>
+    <meta
+      name="description"
+      content="Scopri il meraviglioso mondo di Ugo, il cane più dolce e saggio. Storie, avventure, saggezze quotidiane e tanto amore a quattro zampe."
+    />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles/main.css" />
+    <link rel="stylesheet" href="styles/animations.css" />
+
+    <!-- Favicon -->
+    <link rel="icon" href="images/logo-ugo1.png" type="image/png" />
+
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#FF6B6B" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Il Mondo di Ugo" />
+    <meta
+      property="og:description"
+      content="Il cane più buono del mondo ti aspetta!"
+    />
+    <meta property="og:image" content="images/ugo-francesco.jpeg" />
+    <meta property="og:type" content="website" />
+  </head>
+  <body>
+    <!-- Cursor Glow Effect -->
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <!-- Floating Particles Background -->
+    <div class="particles-container" id="particles"></div>
+
+    <!-- Navigation -->
+    <nav class="nav-glass" id="navbar">
+      <div class="nav-content">
+        <a href="#" class="nav-logo">
+          <img src="images/logo-ugo1.png" alt="Ugo Logo" class="logo-img" />
+          <span class="logo-text">Ugo</span>
+        </a>
+
+        <div class="nav-links" id="navLinks">
+          <a href="#home" class="nav-link active">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+          </a>
+          <a href="#about" class="nav-link">
+            <i class="fas fa-paw"></i>
+            <span>Chi è Ugo</span>
+          </a>
+          <a href="#gallery" class="nav-link">
+            <i class="fas fa-images"></i>
+            <span>Galleria</span>
+          </a>
+          <a href="#wisdom" class="nav-link">
+            <i class="fas fa-brain"></i>
+            <span>Saggezze</span>
+          </a>
+          <a href="#stories" class="nav-link">
+            <i class="fas fa-book-open"></i>
+            <span>Storie</span>
+          </a>
+          <a href="#contact" class="nav-link">
+            <i class="fas fa-envelope"></i>
+            <span>Contatti</span>
+          </a>
+        </div>
+
+        <button class="nav-toggle" id="navToggle" aria-label="Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <div class="hero-bg">
+        <div class="hero-gradient"></div>
+        <div class="hero-mesh"></div>
+      </div>
+
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="badge-icon">🐾</span>
+          <span class="badge-text">Benvenuto nel mio mondo</span>
+        </div>
+
+        <h1 class="hero-title">
+          <span class="title-line">Il Meraviglioso</span>
+          <span class="title-line highlight">Mondo di Ugo</span>
+        </h1>
+
+        <p class="hero-subtitle">
+          Ciao, sono Ugo! Un cane con un cuore grande come il sole, una coda che
+          non smette mai di scodinzolare e tanti pensieri profondi da
+          condividere con te.
+        </p>
+
+        <div class="hero-cta">
+          <a href="#about" class="btn btn-primary">
+            <span>Scopri di più</span>
+            <i class="fas fa-arrow-right"></i>
+          </a>
+          <a href="#gallery" class="btn btn-secondary">
+            <span>Guarda le foto</span>
+            <i class="fas fa-images"></i>
+          </a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-number" data-count="365">0</span>
+            <span class="stat-label">Giorni di Felicità</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number" data-count="1000">0</span>
+            <span class="stat-label">Biscotti Mangiati</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number" data-count="∞">∞</span>
+            <span class="stat-label">Coccole Ricevute</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-image">
+        <div class="image-wrapper">
+          <img
+            src="images/Ugo.jpeg"
+            alt="Ugo, il cane più buono del mondo"
+            class="hero-img"
+          />
+          <div class="image-frame"></div>
+          <div class="image-glow"></div>
+        </div>
+        <div class="floating-elements">
+          <span class="float-emoji float-1">🦴</span>
+          <span class="float-emoji float-2">❤️</span>
+          <span class="float-emoji float-3">🐾</span>
+          <span class="float-emoji float-4">⭐</span>
+        </div>
+      </div>
+
+      <div class="scroll-indicator">
+        <span>Scorri per scoprire</span>
+        <div class="scroll-arrow">
+          <i class="fas fa-chevron-down"></i>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Chi Sono</span>
+          <h2 class="section-title">Ciao, sono Ugo! 🐕</h2>
+          <p class="section-subtitle">Un cane speciale con un cuore d'oro</p>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-card glass-card">
+            <div class="card-icon gradient-bg">
+              <i class="fas fa-heart"></i>
+            </div>
+            <h3>Dolcezza Infinita</h3>
+            <p>
+              Non mordo, non distruggo, non scavo. Abbaia solo per salutare e
+              per dire "ti voglio bene"!
+            </p>
+          </div>
+
+          <div class="about-card glass-card">
+            <div class="card-icon gradient-bg">
+              <i class="fas fa-brain"></i>
+            </div>
+            <h3>Filosofo del Divano</h3>
+            <p>
+              Medito fissando il vuoto, ignoro il caos, ma mai un biscotto. La
+              saggezza arriva dalla pazienza.
+            </p>
+          </div>
+
+          <div class="about-card glass-card">
+            <div class="card-icon gradient-bg">
+              <i class="fas fa-sun"></i>
+            </div>
+            <h3>Amante del Sole</h3>
+            <p>
+              Mi piacciono le giornate calde, le carezze lunghe e i pisolini nel
+              raggio di sole sul pavimento.
+            </p>
+          </div>
+
+          <div class="about-card glass-card">
+            <div class="card-icon gradient-bg">
+              <i class="fas fa-utensils"></i>
+            </div>
+            <h3>Gourmet Selettivo</h3>
+            <p>
+              Ogni crocchetta merita rispetto. Ogni biscotto è un momento sacro.
+              La pazienza premia sempre.
+            </p>
+          </div>
+        </div>
+
+        <div class="about-featured">
+          <div class="featured-image">
+            <img
+              src="images/ugo-francesco.jpeg"
+              alt="Francesco e Ugo insieme"
+            />
+            <div class="featured-overlay"></div>
+          </div>
+          <div class="featured-content">
+            <span class="featured-badge">La nostra storia</span>
+            <h3>Francesco & Ugo</h3>
+            <p>
+              Una storia di amicizia che va oltre le parole. Io sono Francesco,
+              e Ugo è il mio compagno di avventure. Insieme esploriamo il mondo,
+              condividiamo momenti di gioia e creiamo ricordi indimenticabili.
+            </p>
+            <p>
+              Questo sito è nato per celebrare l'amore incondizionato che un
+              cane sa dare e per ricordare che ogni giorno è un'opportunità per
+              essere felici, proprio come Ugo ci insegna.
+            </p>
+            <a href="#contact" class="btn btn-outline">
+              <span>Scrivimi</span>
+              <i class="fas fa-paper-plane"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery" id="gallery">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Galleria</span>
+          <h2 class="section-title">I Mille Volti di Ugo 📸</h2>
+          <p class="section-subtitle">Momenti catturati, ricordi indelebili</p>
+        </div>
+
+        <div class="gallery-filters">
+          <button class="filter-btn active" data-filter="all">Tutti</button>
+          <button class="filter-btn" data-filter="portrait">Ritratti</button>
+          <button class="filter-btn" data-filter="action">Azione</button>
+          <button class="filter-btn" data-filter="cute">Dolcezza</button>
+        </div>
+
+        <div class="gallery-grid">
+          <div class="gallery-item" data-category="portrait">
+            <img src="images/Ugo.jpeg" alt="Ugo ritratto" loading="lazy" />
+            <div class="gallery-overlay">
+              <span class="gallery-icon"
+                ><i class="fas fa-search-plus"></i
+              ></span>
+              <span class="gallery-title">Il Poeta</span>
+            </div>
+          </div>
+
+          <div class="gallery-item large" data-category="cute">
+            <img
+              src="images/ugo-occhi.jpeg"
+              alt="Gli occhi dolci di Ugo"
+              loading="lazy"
+            />
+            <div class="gallery-overlay">
+              <span class="gallery-icon"
+                ><i class="fas fa-search-plus"></i
+              ></span>
+              <span class="gallery-title">Occhi Parlanti</span>
+            </div>
+          </div>
+
+          <div class="gallery-item" data-category="action">
+            <img
+              src="images/ugo-curioso.jpeg"
+              alt="Ugo curioso"
+              loading="lazy"
+            />
+            <div class="gallery-overlay">
+              <span class="gallery-icon"
+                ><i class="fas fa-search-plus"></i
+              ></span>
+              <span class="gallery-title">Il Curioso</span>
+            </div>
+          </div>
+
+          <div class="gallery-item" data-category="portrait">
+            <img src="images/ugo-buffo.jpeg" alt="Ugo buffo" loading="lazy" />
+            <div class="gallery-overlay">
+              <span class="gallery-icon"
+                ><i class="fas fa-search-plus"></i
+              ></span>
+              <span class="gallery-title">Il Buffone</span>
+            </div>
+          </div>
+
+          <div class="gallery-item large" data-category="cute">
+            <img
+              src="images/ugo-piccolo.jpeg"
+              alt="Ugo da piccolo"
+              loading="lazy"
+            />
+            <div class="gallery-overlay">
+              <span class="gallery-icon"
+                ><i class="fas fa-search-plus"></i
+              ></span>
+              <span class="gallery-title">Baby Ugo</span>
+            </div>
+          </div>
+
+          <div class="gallery-item" data-category="action">
+            <img
+              src="images/ugo-inpiedi.jpeg"
+              alt="Ugo in piedi"
+              loading="lazy"
+            />
+            <div class="gallery-overlay">
+              <span class="gallery-icon"
+                ><i class="fas fa-search-plus"></i
+              ></span>
+              <span class="gallery-title">L'Esploratore</span>
+            </div>
+          </div>
+
+          <div class="gallery-item" data-category="cute">
+            <img
+              src="images/ugo-piccolo-tappeto.jpeg"
+              alt="Ugo piccolo sul tappeto"
+              loading="lazy"
+            />
+            <div class="gallery-overlay">
+              <span class="gallery-icon"
+                ><i class="fas fa-search-plus"></i
+              ></span>
+              <span class="gallery-title">Tenerezza</span>
+            </div>
+          </div>
+
+          <div class="gallery-item" data-category="portrait">
+            <img
+              src="images/ugo-cucina.jpeg"
+              alt="Ugo in cucina"
+              loading="lazy"
+            />
+            <div class="gallery-overlay">
+              <span class="gallery-icon"
+                ><i class="fas fa-search-plus"></i
+              ></span>
+              <span class="gallery-title">Chef Ugo</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Wisdom Section -->
+    <section class="wisdom" id="wisdom">
+      <div class="container">
+        <div class="section-header light">
+          <span class="section-badge">Saggezze Quotidiane</span>
+          <h2 class="section-title">I Pensieri di Ugo 💭</h2>
+          <p class="section-subtitle">
+            Riflessioni dal divano più saggio del mondo
+          </p>
+        </div>
+
+        <div class="wisdom-carousel">
+          <div class="wisdom-card active">
+            <div class="wisdom-quote">
+              <i class="fas fa-quote-left"></i>
+              <p>
+                "La pazienza è la virtù dei cani. Aspetto il mio umano davanti
+                alla porta, e so che tornerà. Sempre."
+              </p>
+              <span class="wisdom-author">— Ugo, filosofo quadrupede</span>
+            </div>
+          </div>
+
+          <div class="wisdom-card">
+            <div class="wisdom-quote">
+              <i class="fas fa-quote-left"></i>
+              <p>
+                "Ogni biscotto ha il suo momento. Non bisogna affrettare la
+                felicità, va assaporata un morso alla volta."
+              </p>
+              <span class="wisdom-author">— Ugo, esperto di biscotti</span>
+            </div>
+          </div>
+
+          <div class="wisdom-card">
+            <div class="wisdom-quote">
+              <i class="fas fa-quote-left"></i>
+              <p>
+                "Il sole sul pavimento è il regalo più prezioso. A volte la
+                felicità sta nel trovare la posizione perfetta."
+              </p>
+              <span class="wisdom-author">— Ugo, maestro del relax</span>
+            </div>
+          </div>
+
+          <div class="wisdom-card">
+            <div class="wisdom-quote">
+              <i class="fas fa-quote-left"></i>
+              <p>
+                "Non serve abbaiare per farsi sentire. Basta uno sguardo carico
+                d'amore e il cuore di un umano si scioglie."
+              </p>
+              <span class="wisdom-author">— Ugo, esperto di comunicazione</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="wisdom-dots">
+          <button class="wisdom-dot active" data-slide="0"></button>
+          <button class="wisdom-dot" data-slide="1"></button>
+          <button class="wisdom-dot" data-slide="2"></button>
+          <button class="wisdom-dot" data-slide="3"></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stories Section -->
+    <section class="stories" id="stories">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Avventure</span>
+          <h2 class="section-title">Le Storie di Ugo 📖</h2>
+          <p class="section-subtitle">
+            Cronache di vita quotidiana a quattro zampe
+          </p>
+        </div>
+
+        <div class="stories-grid">
+          <article class="story-card featured">
+            <div class="story-image">
+              <img src="images/ugo-bg.jpg" alt="Ugo in avventura" />
+              <div class="story-category">Avventura</div>
+            </div>
+            <div class="story-content">
+              <div class="story-meta">
+                <span><i class="far fa-calendar"></i> 9 Feb 2026</span>
+                <span><i class="far fa-clock"></i> 5 min</span>
+              </div>
+              <h3>L'Esplorazione del Giardino Segreto</h3>
+              <p>
+                Oggi ho scoperto un angolo del giardino che non avevo mai
+                esplorato. C'erano odori nuovi, foglie croccanti e un mistero da
+                risolvere...
+              </p>
+              <a href="#" class="story-link">
+                <span>Leggi la storia</span>
+                <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </article>
+
+          <article class="story-card">
+            <div class="story-image">
+              <img src="images/ugo-piccolo2.jpeg" alt="Ugo piccolo" />
+              <div class="story-category">Ricordi</div>
+            </div>
+            <div class="story-content">
+              <div class="story-meta">
+                <span><i class="far fa-calendar"></i> 7 Feb 2026</span>
+                <span><i class="far fa-clock"></i> 3 min</span>
+              </div>
+              <h3>Quando Ero Piccolo</h3>
+              <p>
+                I primi passi, le prime coccole, i primi biscotti. Un viaggio
+                nei ricordi più teneri...
+              </p>
+              <a href="#" class="story-link">
+                <span>Leggi la storia</span>
+                <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </article>
+
+          <article class="story-card">
+            <div class="story-image">
+              <img src="images/golden con sfondo nero.jpg" alt="Ugo golden" />
+              <div class="story-category">Filosofia</div>
+            </div>
+            <div class="story-content">
+              <div class="story-meta">
+                <span><i class="far fa-calendar"></i> 5 Feb 2026</span>
+                <span><i class="far fa-clock"></i> 4 min</span>
+              </div>
+              <h3>Meditazione Mattutina</h3>
+              <p>
+                Ogni mattina, prima che il mondo si svegli, trovo il mio angolo
+                di pace e rifletto...
+              </p>
+              <a href="#" class="story-link">
+                <span>Leggi la storia</span>
+                <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+      <div class="container">
+        <div class="newsletter-card glass-card">
+          <div class="newsletter-content">
+            <span class="newsletter-icon">📬</span>
+            <h2>Resta Connesso con Ugo</h2>
+            <p>
+              Iscriviti alla newsletter per ricevere le ultime avventure,
+              saggezze quotidiane e tante foto esclusive!
+            </p>
+            <form class="newsletter-form" id="newsletterForm">
+              <div class="form-group">
+                <input
+                  type="email"
+                  placeholder="La tua email migliore..."
+                  required
+                />
+                <button type="submit" class="btn btn-primary">
+                  <span>Iscriviti</span>
+                  <i class="fas fa-paw"></i>
+                </button>
+              </div>
+            </form>
+            <p class="newsletter-note">
+              🐾 Promesso: niente spam, solo coccole digitali!
+            </p>
+          </div>
+          <div class="newsletter-image">
+            <img src="images/impronta stupenda.jpg" alt="Impronta di Ugo" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Contatti</span>
+          <h2 class="section-title">Scrivimi! ✉️</h2>
+          <p class="section-subtitle">
+            Ugo adora ricevere messaggi dai suoi amici
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-info">
+            <div class="contact-card glass-card">
+              <div class="contact-icon">
+                <i class="fab fa-instagram"></i>
+              </div>
+              <h3>Instagram</h3>
+              <p>Seguimi per foto quotidiane e stories!</p>
+              <a
+                href="https://instagram.com/fra.archi"
+                target="_blank"
+                class="contact-link"
+                >@fra.archi</a
+              >
+            </div>
+
+            <div class="contact-card glass-card">
+              <div class="contact-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <h3>Email</h3>
+              <p>Per messaggi più lunghi e riflessivi</p>
+              <a href="mailto:info@lacucciadiugo.it" class="contact-link"
+                >info@lacucciadiugo.it</a
+              >
+            </div>
+
+            <div class="contact-card glass-card">
+              <div class="contact-icon">
+                <i class="fas fa-heart"></i>
+              </div>
+              <h3>Con Amore</h3>
+              <p>Creato con ❤️ da Francesco Archidiacono</p>
+              <span class="contact-link">Il compagno umano di Ugo</span>
+            </div>
+          </div>
+
+          <form class="contact-form glass-card" id="contactForm">
+            <div class="form-group">
+              <label for="name">Il tuo nome</label>
+              <input
+                type="text"
+                id="name"
+                placeholder="Come ti chiami?"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                placeholder="Per risponderti"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="message">Messaggio</label>
+              <textarea
+                id="message"
+                rows="5"
+                placeholder="Scrivi qui il tuo messaggio per Ugo..."
+                required
+              ></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">
+              <span>Invia Messaggio</span>
+              <i class="fas fa-paper-plane"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a href="#" class="footer-logo">
+              <img src="images/logo-ugo1.png" alt="Ugo Logo" />
+              <span>Il Mondo di Ugo</span>
+            </a>
+            <p>
+              Un angolo di internet dedicato all'amore incondizionato che solo
+              un cane sa dare. 🐾
+            </p>
+            <div class="footer-social">
+              <a
+                href="https://instagram.com/fra.archi"
+                target="_blank"
+                aria-label="Instagram"
+              >
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a href="#" aria-label="Facebook">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a href="#" aria-label="Twitter">
+                <i class="fab fa-twitter"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="footer-links">
+            <h4>Link Rapidi</h4>
+            <ul>
+              <li><a href="#home">Home</a></li>
+              <li><a href="#about">Chi è Ugo</a></li>
+              <li><a href="#gallery">Galleria</a></li>
+              <li><a href="#wisdom">Saggezze</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-links">
+            <h4>Altro</h4>
+            <ul>
+              <li><a href="#stories">Storie</a></li>
+              <li><a href="#contact">Contatti</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Cookie Policy</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>
+            &copy; 2026 Il Meraviglioso Mondo di Ugo. Creato con ❤️ da Francesco
+            Archidiacono.
+          </p>
+          <p class="footer-tagline">
+            Perché ogni cane merita una cuccia, un nome e un umano che lo ama.
+            🐕
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" id="backToTop" aria-label="Torna su">
+      <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+      <button class="lightbox-close" aria-label="Chiudi">
+        <i class="fas fa-times"></i>
+      </button>
+      <div class="lightbox-content">
+        <img src="" alt="" id="lightboxImg" />
+        <p class="lightbox-caption" id="lightboxCaption"></p>
+      </div>
+      <button class="lightbox-prev" aria-label="Precedente">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <button class="lightbox-next" aria-label="Successivo">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+    </div>
+
+    <!-- Scripts -->
+    <script src="scripts/main.js"></script>
+  </body>
+</html>

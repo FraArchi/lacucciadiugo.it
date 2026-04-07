@@ -1,2 +1,0 @@
-
-"""Daily Wisdom AI Module"""

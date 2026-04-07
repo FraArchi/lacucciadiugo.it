@@ -6,8 +6,9 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
 }
 
 model User {
@@ -20,12 +21,16 @@ model User {
   avatar          String?
   bio             String?
   dateOfBirth     DateTime?
-  dogName         String?   // Nome del proprio cane
-  dogBreed        String?   // Razza del cane
-  dogPhoto        String?   // Foto del cane
+  dogName         String?   // Nome del proprio cane (legacy)
+  dogBreed        String?   // Razza del cane (legacy)
+  dogPhoto        String?   // Foto del cane (legacy)
+  location        String?   // Roma, Milano, etc.
+  latitude        Float?
+  longitude       Float?
   isVerified      Boolean   @default(false)
   isAdmin         Boolean   @default(false)
   isActive        Boolean   @default(true)
+  isPremium       Boolean   @default(false)
   points          Int       @default(0)
   streak          Int       @default(0)
   level           Int       @default(1)
@@ -45,7 +50,7 @@ model User {
   googleId        String?   @unique
   facebookId      String?   @unique
   
-  // Relations
+  // Original Relations
   posts           Post[]
   comments        Comment[]
   likes           Like[]
@@ -59,6 +64,15 @@ model User {
   sessions        UserSession[]
   analytics       UserAnalytics[]
   conversations   Conversation[]
+  
+  // DogLife Relations
+  dogs                Dog[]
+  marketplaceListings MarketplaceListing[]
+  marketplaceInquiries MarketplaceInquiry[]
+  createdGroups       ForumGroup[]         @relation("GroupCreator")
+  groupMemberships    GroupMember[]
+  videoAnalyses       VideoAnalysis[]
+  subscription        Subscription?
   
   @@map("users")
 }
@@ -108,6 +122,10 @@ model Post {
   tags        PostTag[]
   categories  PostCategory[]
   analytics   PostAnalytics[]
+  
+  // Forum Group (optional)
+  group       ForumGroup? @relation("GroupPosts", fields: [groupId], references: [id])
+  groupId     String?
   
   @@map("posts")
 }
@@ -430,4 +448,283 @@ enum NotificationType {
   SYSTEM_NOTIFICATION
   REMINDER
   UGO_AI_MESSAGE
+  MARKETPLACE_INQUIRY
+  VIDEO_ANALYSIS_COMPLETE
+  SUBSCRIPTION_REMINDER
 }
+
+// =====================================================
+// DOGLIFE SAAS MODELS
+// =====================================================
+
+// Dog Profile (supports multiple dogs per user)
+model Dog {
+  id          String   @id @default(cuid())
+  name        String
+  breed       String?
+  birthDate   DateTime?
+  weight      Float?   // kg
+  gender      String?  // male, female
+  photoUrl    String?
+  chipId      String?  // Microchip number
+  isNeutered  Boolean  @default(false)
+  notes       String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  owner       User     @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  ownerId     String
+  
+  healthRecords DogHealthRecord[]
+  videoAnalyses VideoAnalysis[]
+  iotDevices    IotDevice[]
+  
+  @@map("dogs")
+}
+
+model DogHealthRecord {
+  id          String   @id @default(cuid())
+  type        HealthRecordType
+  date        DateTime
+  description String
+  vetName     String?
+  vetPhone    String?
+  notes       String?
+  remindDate  DateTime?
+  attachments String[] // URLs to documents/photos
+  createdAt   DateTime @default(now())
+  
+  dog         Dog      @relation(fields: [dogId], references: [id], onDelete: Cascade)
+  dogId       String
+  
+  @@map("dog_health_records")
+}
+
+enum HealthRecordType {
+  VACCINE
+  CHECKUP
+  MEDICATION
+  SURGERY
+  ALLERGY
+  WEIGHT_CHECK
+  OTHER
+}
+
+// Marketplace
+model MarketplaceListing {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  price       Float
+  currency    String   @default("EUR")
+  category    MarketplaceCategory
+  condition   ItemCondition @default(USED)
+  images      String[]
+  location    String?  // Roma, Lazio, etc.
+  latitude    Float?
+  longitude   Float?
+  isActive    Boolean  @default(true)
+  isSold      Boolean  @default(false)
+  views       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  seller      User     @relation(fields: [sellerId], references: [id], onDelete: Cascade)
+  sellerId    String
+  
+  inquiries   MarketplaceInquiry[]
+  
+  @@map("marketplace_listings")
+}
+
+enum MarketplaceCategory {
+  FOOD
+  ACCESSORIES
+  TOYS
+  CLOTHING
+  HEALTH
+  GROOMING
+  TRAINING
+  SERVICES
+  OTHER
+}
+
+enum ItemCondition {
+  NEW
+  LIKE_NEW
+  GOOD
+  USED
+  FOR_PARTS
+}
+
+model MarketplaceInquiry {
+  id          String   @id @default(cuid())
+  message     String
+  phone       String?
+  isRead      Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  
+  listing     MarketplaceListing @relation(fields: [listingId], references: [id], onDelete: Cascade)
+  listingId   String
+  buyer       User     @relation(fields: [buyerId], references: [id], onDelete: Cascade)
+  buyerId     String
+  
+  @@map("marketplace_inquiries")
+}
+
+// Forum Groups (Local Communities)
+model ForumGroup {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  slug        String   @unique
+  coverImage  String?
+  location    String?  // Roma, Milano, Napoli, etc.
+  region      String?  // Lazio, Lombardia, etc.
+  isPrivate   Boolean  @default(false)
+  isVerified  Boolean  @default(false)
+  memberCount Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  creator     User     @relation("GroupCreator", fields: [creatorId], references: [id])
+  creatorId   String
+  
+  members     GroupMember[]
+  posts       Post[]   @relation("GroupPosts")
+  
+  @@map("forum_groups")
+}
+
+model GroupMember {
+  id        String   @id @default(cuid())
+  role      GroupRole @default(MEMBER)
+  joinedAt  DateTime @default(now())
+  
+  group     ForumGroup @relation(fields: [groupId], references: [id], onDelete: Cascade)
+  groupId   String
+  user      User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    String
+  
+  @@unique([groupId, userId])
+  @@map("group_members")
+}
+
+enum GroupRole {
+  ADMIN
+  MODERATOR
+  MEMBER
+}
+
+// AI Video Analysis
+model VideoAnalysis {
+  id              String   @id @default(cuid())
+  videoUrl        String
+  thumbnailUrl    String?
+  duration        Int?     // seconds
+  analysisType    AnalysisType
+  status          AnalysisStatus @default(PENDING)
+  results         Json?    // AI analysis results (poses, behaviors detected)
+  recommendations Json?    // Generated training recommendations
+  tutorialUrl     String?  // Generated tutorial video URL (premium)
+  confidence      Float?   // AI confidence score 0-1
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  
+  dog             Dog      @relation(fields: [dogId], references: [id], onDelete: Cascade)
+  dogId           String
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId          String
+  
+  @@map("video_analyses")
+}
+
+enum AnalysisType {
+  BEHAVIOR
+  TRAINING
+  EXERCISE
+  HEALTH_CHECK
+  GENERAL
+}
+
+enum AnalysisStatus {
+  PENDING
+  PROCESSING
+  COMPLETED
+  FAILED
+}
+
+// IoT Devices (GPS Collars, Activity Trackers)
+model IotDevice {
+  id          String   @id @default(cuid())
+  type        IotDeviceType
+  deviceId    String   @unique
+  name        String?
+  brand       String?
+  isActive    Boolean  @default(true)
+  lastSync    DateTime?
+  batteryLevel Int?    // 0-100
+  settings    Json?
+  createdAt   DateTime @default(now())
+  
+  dog         Dog      @relation(fields: [dogId], references: [id], onDelete: Cascade)
+  dogId       String
+  
+  dataPoints  IotDataPoint[]
+  
+  @@map("iot_devices")
+}
+
+enum IotDeviceType {
+  GPS_COLLAR
+  ACTIVITY_TRACKER
+  HEALTH_MONITOR
+  SMART_FEEDER
+}
+
+model IotDataPoint {
+  id        String   @id @default(cuid())
+  type      String   // location, steps, heart_rate, temperature
+  data      Json     // { lat, lng } or { steps: 1234 } etc.
+  timestamp DateTime @default(now())
+  
+  device    IotDevice @relation(fields: [deviceId], references: [id], onDelete: Cascade)
+  deviceId  String
+  
+  @@index([deviceId, timestamp])
+  @@map("iot_data_points")
+}
+
+// Subscriptions
+model Subscription {
+  id            String   @id @default(cuid())
+  plan          SubscriptionPlan @default(FREE)
+  status        SubscriptionStatus @default(ACTIVE)
+  priceMonthly  Float    @default(0)
+  startDate     DateTime @default(now())
+  endDate       DateTime?
+  cancelledAt   DateTime?
+  stripeCustomerId String?
+  stripeSubscriptionId String? @unique
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  
+  user          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId        String   @unique
+  
+  @@map("subscriptions")
+}
+
+enum SubscriptionPlan {
+  FREE
+  PREMIUM
+  PRO
+}
+
+enum SubscriptionStatus {
+  ACTIVE
+  CANCELLED
+  EXPIRED
+  PAST_DUE
+}
+
